@@ -2,6 +2,7 @@ import React from 'react';
 import CountryDomainFilter from "../CountryDomainFilter"
 import ClassificationDomainFilter from "../ClassificationDomainFilter"
 import SubClassificationDomainFilter from "../SubClassificationDomainFilter"
+import {DomainConfig} from "../../redux/domains/types"
 
 interface State {
     countries: string[],
@@ -11,12 +12,6 @@ interface State {
 
 interface Props {
     domains: string[]
-}
-
-interface DomainConfig {
-    countries: string[],
-    classifications: string[],
-    subClassifications: string[]
 }
 
 const initialData: DomainConfig = {countries: [], classifications: [], subClassifications: []}
@@ -37,6 +32,7 @@ const extractData = (domains: string[]): DomainConfig =>
 class DomainFilter extends React.Component<Props, State> {
     componentDidMount() {
         const {domains} = this.props
+        console.log(this.props)
         const {countries, classifications, subClassifications} = extractData(domains)
         this.setState({
             countries,
@@ -55,7 +51,7 @@ class DomainFilter extends React.Component<Props, State> {
         console.log(this.state)
 
         return (<>
-            <CountryDomainFilter countries={countries}/>
+            <CountryDomainFilter/>
             <ClassificationDomainFilter classifications={classifications}/>
             <SubClassificationDomainFilter subClassifications={subClassifications}/>
         </>)

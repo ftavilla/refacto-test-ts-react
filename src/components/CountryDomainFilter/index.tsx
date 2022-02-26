@@ -1,1 +1,1 @@
-export { default } from './CountryDomainFilter.component';
+export { default } from './CountryDomainFilter.container';

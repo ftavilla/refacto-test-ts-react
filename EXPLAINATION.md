@@ -31,3 +31,6 @@ The idea is to isolate these 3 components and each component will use its own se
 I would be great to achieve this as it will allows us to use them everywhere and they will be independent.
 I will do 3 commits for each components.
 let's go.
+
+# Fourth Step
+As mentioned in the previous step I am going to relocate the logic in the selectors and make a selector for each select.
