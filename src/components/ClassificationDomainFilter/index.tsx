@@ -1,1 +1,1 @@
-export { default } from './ClassificationDomainFilter.component';
+export { default } from './ClassificationDomainFilter.container';
