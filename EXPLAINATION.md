@@ -12,5 +12,11 @@ use the golden master technic to refactor this logic.
 I will make my unit test first to ensure I do not break anything and then refactor the code.
 As I don't like enzyme for a lot of reasons I am installing React testing library. 
 (I needed to update TS version to make it work.)
-Let's do it!.
+Let's do it!
+
+
+# Second step
+
+Now I am sure I cannot break anything, I am beginning the refactoring on the business logic contains 
+by the DomainFilters component.
 

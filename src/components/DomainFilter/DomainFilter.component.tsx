@@ -1,79 +1,74 @@
 import React from 'react';
-import { threadId } from 'worker_threads';
 
 interface State {
-  countries: string[],
-  classifications: string[],
-  subClassifications: string[]
+    countries: string[],
+    classifications: string[],
+    subClassifications: string[]
 }
 
 interface Props {
-  domains: string[]
+    domains: string[]
 }
 
-class DomainFilter extends React.Component<Props, State> {
-  componentDidMount() {
-    const { domains } = this.props
-    console.log(domains)
-    this.state = {
-      countries: [],
-      classifications: [],
-      subClassifications: []
-    }
+interface DomainConfig {
+    countries: string[],
+    classifications: string[],
+    subClassifications: string[]
+}
 
-    const s: any = {};
+const initialData: DomainConfig = {countries: [], classifications: [], subClassifications: []}
 
-    for(let i = 0; i < domains.length; i++) {
-      if (this.state.countries.indexOf(domains[i].substring(0,2)) <= 0) {
-        this.state.countries.push(domains[i].substring(0,2))
-      }
-      this.state.classifications.push(domains[i].substring(3,5));
-      let flag = false;
-      for(let j = 0; j < this.state.subClassifications.length; j++) {
-        if (this.state.subClassifications[j] == domains[i].substring(6)) {
-          flag = true
-          break;
+const extractData = (domains: string[]): DomainConfig =>
+    domains.reduce((acc: any, domain: string) => {
+        const country = domain.substring(0, 2);
+        const classification = domain.substring(3, 5);
+        const subClassification = domain.substring(6);
+
+        return {
+            countries: [...acc.countries, ...(!acc.countries.includes(country) ? [country] : [])],
+            classifications: [...acc.classifications, ...(!acc.classifications.includes(classification) ? [classification] : [])],
+            subClassifications: [...acc.subClassifications, ...(!acc.subClassifications.includes(subClassification) ? [subClassification] : [])]
         }
-      }
-      if (!flag) {
-        this.state.subClassifications.push(domains[i].substring(6));
-      }
+    }, initialData)
+
+class DomainFilter extends React.Component<Props, State> {
+    componentDidMount() {
+        const {domains} = this.props
+        const {countries, classifications, subClassifications} = extractData(domains)
+        this.setState({
+            countries,
+            classifications,
+            subClassifications
+        })
     }
 
-    this.setState({
-      ...this.state,
-      classifications: this.state.classifications.filter((e, i, l) => l.indexOf(e) === i),
-    })
-    this.forceUpdate()
-  }
+    render() {
+        const {countries, classifications, subClassifications} = this.state || {
+            countries: [],
+            classifications: [],
+            subClassifications: []
+        };
 
-  render() {
-    const {countries, classifications, subClassifications} = this.state || {
-      countries: [],
-      classifications: [],
-      subClassifications: []
-    };
+        console.log(this.state)
 
-    console.log(this.state)
-
-    return (<>
-      <select name="countries" multiple>
-        {countries.map(country => (
-          <option value={country} key={country}>{country}</option>
-        ))}
-      </select>
-      <select name="classifications" multiple>
-        {classifications.map(classification => (
-          <option value={classification} key={classification}>{classification}</option>
-        ))}
-      </select>
-      <select name="subClassifications" multiple>
-        {subClassifications.map(subClassification => (
-          <option value={subClassification} key={subClassification}>{subClassification}</option>
-        ))}
-      </select>
-    </>)
-  }
+        return (<>
+            <select name="countries" multiple>
+                {countries.map(country => (
+                    <option value={country} key={country}>{country}</option>
+                ))}
+            </select>
+            <select name="classifications" multiple>
+                {classifications.map(classification => (
+                    <option value={classification} key={classification}>{classification}</option>
+                ))}
+            </select>
+            <select name="subClassifications" multiple>
+                {subClassifications.map(subClassification => (
+                    <option value={subClassification} key={subClassification}>{subClassification}</option>
+                ))}
+            </select>
+        </>)
+    }
 }
 
 export default DomainFilter
