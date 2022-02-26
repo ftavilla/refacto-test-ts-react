@@ -23,13 +23,13 @@ describe('components', () => {
             expected.countries.forEach((country: string) => expect(screen.getByText(country)).toBeTruthy())
         })
 
-        it('should display a country select with 5 classifications', () => {
+        it('should display a classification select with 3 classifications', () => {
             render(<DomainFilter domains={storedDomains}/>)
 
             expected.classifications.forEach((classification: string) => expect(screen.getByText(classification)).toBeTruthy())
         })
 
-        it('should display a country select with 4 subClassifications', () => {
+        it('should display a subClassifications select with 4 subClassifications', () => {
             render(<DomainFilter domains={storedDomains}/>)
 
             expected.subClassifications.forEach((subClassification: string) => expect(screen.getByText(subClassification)).toBeTruthy())
