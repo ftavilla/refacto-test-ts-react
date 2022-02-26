@@ -14,6 +14,7 @@ interface Props {
 class DomainFilter extends React.Component<Props, State> {
   componentDidMount() {
     const { domains } = this.props
+    console.log(domains)
     this.state = {
       countries: [],
       classifications: [],
@@ -52,6 +53,8 @@ class DomainFilter extends React.Component<Props, State> {
       classifications: [],
       subClassifications: []
     };
+
+    console.log(this.state)
 
     return (<>
       <select name="countries" multiple>
