@@ -1,1 +1,1 @@
-export { default } from './SubClassificationDomainFilter.component';
+export { default } from './SubClassificationDomainFilter.container';

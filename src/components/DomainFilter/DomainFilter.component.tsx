@@ -53,7 +53,7 @@ class DomainFilter extends React.Component<Props, State> {
         return (<>
             <CountryDomainFilter/>
             <ClassificationDomainFilter />
-            <SubClassificationDomainFilter subClassifications={subClassifications}/>
+            <SubClassificationDomainFilter />
         </>)
     }
 }

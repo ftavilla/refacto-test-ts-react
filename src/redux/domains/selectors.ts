@@ -28,3 +28,7 @@ export function getCountries(state: AppState): string[] {
 export function getClassifications(state: AppState): string[] {
   return extractData(state.domains).classifications
 }
+
+export function getSubClassifications(state: AppState): string[] {
+  return extractData(state.domains).subClassifications
+}
