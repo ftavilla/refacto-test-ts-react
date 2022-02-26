@@ -1,6 +1,7 @@
 import React from 'react';
 import CountryDomainFilter from "../CountryDomainFilter"
 import ClassificationDomainFilter from "../ClassificationDomainFilter"
+import SubClassificationDomainFilter from "../SubClassificationDomainFilter"
 
 interface State {
     countries: string[],
@@ -56,11 +57,7 @@ class DomainFilter extends React.Component<Props, State> {
         return (<>
             <CountryDomainFilter countries={countries}/>
             <ClassificationDomainFilter classifications={classifications}/>
-            <select name="subClassifications" multiple>
-                {subClassifications.map(subClassification => (
-                    <option value={subClassification} key={subClassification}>{subClassification}</option>
-                ))}
-            </select>
+            <SubClassificationDomainFilter subClassifications={subClassifications}/>
         </>)
     }
 }
