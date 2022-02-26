@@ -20,3 +20,14 @@ Let's do it!
 Now I am sure I cannot break anything, I am beginning the refactoring on the business logic contains 
 by the DomainFilters component.
 
+# Third step
+
+Now I refactored the logic I want to relocated in the domain part, more precisly in the selector part.
+So let's do it.
+
+I did not see I cannot touch the `getDomains` selector because this selector is used in other part of the application.
+So I am reviewing my plans and I will split all 3 combobox in 3 components.
+The idea is to isolate these 3 components and each component will use its own selector.
+I would be great to achieve this as it will allows us to use them everywhere and they will be independent.
+I will do 3 commits for each components.
+let's go.

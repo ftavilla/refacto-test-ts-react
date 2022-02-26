@@ -1,4 +1,5 @@
 import React from 'react';
+import CountryDomainFilter from "../CountryDomainFilter"
 
 interface State {
     countries: string[],
@@ -52,11 +53,7 @@ class DomainFilter extends React.Component<Props, State> {
         console.log(this.state)
 
         return (<>
-            <select name="countries" multiple>
-                {countries.map(country => (
-                    <option value={country} key={country}>{country}</option>
-                ))}
-            </select>
+            <CountryDomainFilter countries={countries}/>
             <select name="classifications" multiple>
                 {classifications.map(classification => (
                     <option value={classification} key={classification}>{classification}</option>

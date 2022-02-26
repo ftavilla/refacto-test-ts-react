@@ -17,19 +17,19 @@ describe('components', () => {
             expect(screen.getAllByRole('listbox')).toHaveLength(3);
         })
 
-        it('should allow a country select with 3 countries', () => {
+        it('should display a country select with 3 countries', () => {
             render(<DomainFilter domains={storedDomains}/>)
 
             expected.countries.forEach((country: string) => expect(screen.getByText(country)).toBeTruthy())
         })
 
-        it('should allow a country select with 5 classifications', () => {
+        it('should display a country select with 5 classifications', () => {
             render(<DomainFilter domains={storedDomains}/>)
 
             expected.classifications.forEach((classification: string) => expect(screen.getByText(classification)).toBeTruthy())
         })
 
-        it('should allow a country select with 4 subClassifications', () => {
+        it('should display a country select with 4 subClassifications', () => {
             render(<DomainFilter domains={storedDomains}/>)
 
             expected.subClassifications.forEach((subClassification: string) => expect(screen.getByText(subClassification)).toBeTruthy())
