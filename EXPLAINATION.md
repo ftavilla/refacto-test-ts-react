@@ -40,3 +40,14 @@ As we have independent component now we can use them wherever we want.
 Now the component DomainFilter does not need to pass props to each Filters.
 We can now simplify it.
 I am going just going to clean the code in this last step. 
+
+# Conclusion
+I tried to keep it simple and avoid doing complicated stuff.
+I took the input and output and unit test it. Once I have done that I tried 
+to seperate concerns, split in multiple reusable components and relocate the logic where it should be.
+
+Now developpers can use all these component everywhere they want. 
+They just need to be in the react redux provider.
+
+If tommorow the team wants to get rid of the redux store and manage states differently, they just have 
+to delete the containers and use each component.
