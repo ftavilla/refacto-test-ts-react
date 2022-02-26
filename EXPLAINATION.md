@@ -34,3 +34,9 @@ let's go.
 
 # Fourth Step
 As mentioned in the previous step I am going to relocate the logic in the selectors and make a selector for each select.
+
+#Fifth step
+As we have independent component now we can use them wherever we want.
+Now the component DomainFilter does not need to pass props to each Filters.
+We can now simplify it.
+I am going just going to clean the code in this last step. 
